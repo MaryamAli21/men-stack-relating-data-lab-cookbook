@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= recipe.name %></title>
+    <style>
+      /* Basic styling */
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      h1 {
+        color: #2c3e50;
+        font-size: 2.5rem;
+        margin-top: 2rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+        line-height: 1.6;
+        color: #555;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin-bottom: 2rem;
+      }
+
+      ul li {
+        background-color: #3498db;
+        color: white;
+        padding: 0.8rem;
+        margin: 0.5rem 0;
+        border-radius: 5px;
+      }
+
+      button[type="submit"] {
+        background-color: #e74c3c;
+        color: white;
+        padding: 0.7rem 1.5rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #c0392b;
+      }
+
+      a {
+        display: inline-block;
+        text-decoration: none;
+        color: #3498db;
+        padding: 0.7rem 1.5rem;
+        border: 2px solid #3498db;
+        border-radius: 5px;
+        background-color: #fff;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        margin: 1rem;
+      }
+
+      a:hover {
+        background-color: #3498db;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><%= recipe.name %> by <%= recipe.owner %></h1>
+
+    <p><%= recipe.instructions %></p>
+
+    <ul>
+      <% recipe.ingredients.forEach((ingredient) => { %>
+        <li><%= ingredient %></li>
+      <% }); %>
+    </ul>
+
+    <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete <%= recipe.name %></button>
+    </form>
+
+    <a href="/recipes/<%= recipe._id %>/edit">Edit <%= recipe.name %></a>
+    <a href="/recipes">Back to your Recipes</a>
+  </body>
+</html>

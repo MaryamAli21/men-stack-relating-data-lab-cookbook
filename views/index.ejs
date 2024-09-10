@@ -4,20 +4,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Page</title>
+  <style>
+    /* Basic styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2c3e50;
+      font-size: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: #3498db;
+      padding: 0.7rem 1.5rem;
+      border: 2px solid #3498db;
+      border-radius: 5px;
+      background-color: #fff;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #3498db;
+      color: #fff;
+    }
+
+    /* Additional button styling */
+    .view-recipes-btn {
+      display: inline-block;
+      background-color: #1abc9c;
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      margin: 2rem 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .view-recipes-btn:hover {
+      background-color: #16a085;
+    }
+  </style>
 </head>
 <body>
-  <% if (user) { %>
-    <h1>Welcome to the app, <%= user.username %>!</h1>
-    <p>
-      <a href="/auth/sign-out">Sign out</a>
-    </p>
-  <% } else { %>
-    <h1>Welcome to the app, guest.</h1>
-    <p>
-      <a href="/auth/sign-up">Sign up</a> or
-      <a href="/auth/sign-in">Sign in</a>.
-    </p>
-  <% } %>
-  <p><a href="/vip-lounge">Get into the VIP Users Only lounge!</a></p>
+  <%- include('./partials/_navbar.ejs') %>
+  
+  <h1>Welcome to the CookBook!</h1>
+
+  <a class="view-recipes-btn" href="/recipes">View your recipes here!</a>
 </body>
 </html>
